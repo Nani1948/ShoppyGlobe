@@ -48,9 +48,9 @@ function ProductDetail() {
     // Loading message
     if (loading) {
         return (
-            <section className="loading-page">
+        
               <p>Loading product details...</p>
-            </section>
+            
         );
     }
 
@@ -58,7 +58,7 @@ function ProductDetail() {
     if (error) {
         return (
             <section className="error-page">
-                <h2>Error</h2>
+                <h2>Unable to Load Product</h2>
                 <p>{error}</p>
                 <button onClick={() => navigate("/")}> Back to Home</button>
             </section>
