@@ -23,16 +23,18 @@ function CartItem({ item }) {
                 <div className="quantity-controls">
                     <button
                         onClick={() =>
-                            dispatch(decreaseQuantity(item.id))
-                        }
+                            dispatch(decreaseQuantity(item.id))}
+                            disabled={item.quantity ===1}
+                            aria-label={`Decrease quantity of ${item.title}`}                                         
                     >
                         -
                     </button>
                     <span>{item.quantity}</span>
                     <button
                         onClick={() =>
-                            dispatch(increaseQuantity(item.id))
-                        }
+                            dispatch(increaseQuantity(item.id))}
+                        aria-label={`Increase quantity of ${item.title}`}
+                        
                     >
                         +
                     </button>
