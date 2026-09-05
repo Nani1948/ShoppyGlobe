@@ -47,8 +47,9 @@ function CartItem({ item }) {
                 </p>
                 {/* Remove product */}
                 <button
-                    onClick={() =>
-                        dispatch(removeFromCart(item.id))}>
+                    onClick={handleRemove}
+                    aria-label={`Remove ${item.title} from cart`}
+                    >
                     Remove
                 </button>
             </div>
