@@ -1,4 +1,4 @@
-import { StrictMode } from 'react';
+import { StrictMode,lazy,Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from "react-redux";
 
@@ -14,6 +14,12 @@ import Cart from "./components/Cart";
 import NotFound from "./components/NotFound";
 import store from "./redux/store";
 import "./index.css";
+// Lazy load application components
+const Home = lazy(() => import("./pages/Home"));
+const Checkout = lazy(() => import("./pages/Checkout"));
+const ProductDetail = lazy(() => import("./components/ProductDetail"));
+const Cart = lazy(() => import("./components/Cart"));
+const NotFound = lazy(() => import("./components/NotFound"));
 
 //Create application routes
 const router = createBrowserRouter([
@@ -53,7 +59,10 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
+       {/* Suspense displays a loading message while components load */}
+      <Suspense fallback={<p>Loading page...</p>}>
       <RouterProvider router={router} />
+      </Suspense> 
     </Provider>
   </StrictMode>
 );
