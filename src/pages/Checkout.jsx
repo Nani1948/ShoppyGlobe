@@ -13,6 +13,7 @@ import { clearCart } from "../redux/cartSlice";
 function Checkout() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [orderPlaced, setOrderPlaced] = useState(false);
 
   // Get cart data from Redux
   const cartItems = useSelector(selectCartItems);
@@ -40,10 +41,28 @@ function Checkout() {
 
     // Clear the cart after placing the order
     dispatch(clearCart());
+ 
+    // Display order confirmation
+    setOrderPlaced(true);
 
     // Redirect to Home
-    navigate("/");
+    setTimeout(() => {
+    navigate("/"); }, 2000);
   };
+    // Display order confirmation
+  if (orderPlaced) {
+    return (
+      <section className="checkout-page">
+        <header>
+          <h1>Order placed successfully!</h1>
+        </header>
+
+        <p>Thank you for shopping with ShoppyGlobe.</p>
+
+        <p>You will be redirected to the Home page.</p>
+      </section>
+    );
+  }
 
   // Do not allow checkout with an empty cart
   if (cartItems.length === 0) {
@@ -123,14 +142,11 @@ function Checkout() {
           ))}
           <footer>
               <h3>Total: ${cartTotal.toFixed(2)}</h3>
-          </footer>
-          
+          </footer>         
         </section>
 
         {/* Place order button */}
-        <button type="submit">
-          Place Order
-        </button>
+        <button type="submit"> Place Order</button>
       </form>
     </section>
   );
