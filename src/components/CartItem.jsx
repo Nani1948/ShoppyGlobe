@@ -9,6 +9,12 @@ import {
 
 function CartItem({ item }) {
     const dispatch = useDispatch();
+    
+  // Remove product from cart
+    const handleRemove = () => {
+        dispatch(removeFromCart(item.id));
+    };
+
     return (
         <article className="cart-item">
             {/* Product image */}

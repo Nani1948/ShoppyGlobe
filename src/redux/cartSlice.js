@@ -8,7 +8,7 @@ const initialState = {
 
 //Create the cart slice
 const cartSlice = createSlice({
-    name: "cart", //Name of slie
+    name: "cart", //Name of slice
     initialState,//set the starting data
 
     //Function that update the redux state
@@ -74,9 +74,5 @@ const cartSlice = createSlice({
      clearCart,
      setSearchTerm
    }=cartSlice.actions;
-
-
-
-
 
 export default cartSlice.reducer;
